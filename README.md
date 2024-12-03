@@ -1,8 +1,21 @@
 # Convertisseur YouTube MP3/MP4
 
-Une application desktop simple et élégante pour télécharger des vidéos YouTube en format MP4 ou MP3.
+![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
 
-## Fonctionnalités
+Une application desktop simple et élégante pour télécharger des vidéos YouTube en format MP4 ou MP3, développée en Python.
+
+## 🛠️ Technologies utilisées
+
+- **Language:** Python 3.x
+- **Interface graphique:** CustomTkinter
+- **Bibliothèques principales:**
+  - `yt-dlp`: Pour le téléchargement YouTube
+  - `customtkinter`: Pour l'interface graphique moderne
+  - `threading`: Pour la gestion des téléchargements asynchrones
+
+## ✨ Fonctionnalités
 
 - Interface graphique moderne avec CustomTkinter
 - Téléchargement de vidéos YouTube en MP4
@@ -11,7 +24,12 @@ Une application desktop simple et élégante pour télécharger des vidéos YouT
 - Barre de progression en temps réel
 - Interface en français
 
-## Installation
+## 📋 Prérequis
+
+- Python 3.x installé sur votre système
+- Connexion Internet
+
+## 🚀 Installation
 
 1. Clonez le repository :
 ```bash
@@ -24,7 +42,7 @@ cd convertisseur_MP3_MP4
 pip install -r requirements.txt
 ```
 
-## Utilisation
+## 💻 Utilisation
 
 1. Lancez l'application :
 ```bash
@@ -38,12 +56,21 @@ python main.py
 
 Les fichiers seront sauvegardés dans le dossier "downloads".
 
-## Technologies utilisées
+## 📁 Structure du projet
 
-- Python 3.x
-- CustomTkinter pour l'interface graphique
-- yt-dlp pour le téléchargement YouTube
+```
+convertisseur_MP3_MP4/
+├── main.py              # Programme principal
+├── requirements.txt     # Dépendances Python
+├── install_ffmpeg.py    # Script d'installation ffmpeg
+├── README.md           # Documentation
+└── LICENSE             # Licence MIT
+```
 
-## License
+## 📝 License
 
-MIT License
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 👨‍💻 Développeur
+
+- [@VOTRE-USERNAME](https://github.com/VOTRE-USERNAME)
