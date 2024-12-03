@@ -1,76 +1,76 @@
-# Convertisseur YouTube MP3/MP4
+# YouTube MP3/MP4 Converter
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
 
-Une application desktop simple et élégante pour télécharger des vidéos YouTube en format MP4 ou MP3, développée en Python.
+A simple and elegant desktop application to download YouTube videos in MP4 or MP3 format, developed in Python.
 
-## 🛠️ Technologies utilisées
+## 🛠️ Technologies Used
 
 - **Language:** Python 3.x
-- **Interface graphique:** CustomTkinter
-- **Bibliothèques principales:**
-  - `yt-dlp`: Pour le téléchargement YouTube
-  - `customtkinter`: Pour l'interface graphique moderne
-  - `threading`: Pour la gestion des téléchargements asynchrones
+- **GUI Framework:** CustomTkinter
+- **Main Libraries:**
+  - `yt-dlp`: For YouTube downloading
+  - `customtkinter`: For modern GUI interface
+  - `threading`: For asynchronous download handling
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-- Interface graphique moderne avec CustomTkinter
-- Téléchargement de vidéos YouTube en MP4
-- Extraction audio en format MP3
-- Sélection de la qualité vidéo (144p à 1080p)
-- Barre de progression en temps réel
-- Interface en français
+- Modern GUI with CustomTkinter
+- Download YouTube videos in MP4 format
+- Extract audio in MP3 format
+- Video quality selection (144p to 1080p)
+- Real-time progress bar
+- User-friendly interface
 
-## 📋 Prérequis
+## 📋 Prerequisites
 
-- Python 3.x installé sur votre système
-- Connexion Internet
+- Python 3.x installed on your system
+- Internet connection
 
 ## 🚀 Installation
 
-1. Clonez le repository :
+1. Clone the repository:
 ```bash
-git clone https://github.com/VOTRE-USERNAME/convertisseur_MP3_MP4.git
+git clone https://github.com/Ad2m1109/convertisseur_MP3_MP4.git
 cd convertisseur_MP3_MP4
 ```
 
-2. Installez les dépendances :
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## 💻 Utilisation
+## 💻 Usage
 
-1. Lancez l'application :
+1. Launch the application:
 ```bash
 python main.py
 ```
 
-2. Collez l'URL YouTube dans le champ prévu
-3. Choisissez le format (Vidéo MP4 ou Audio MP3)
-4. Sélectionnez la qualité pour les vidéos
-5. Cliquez sur "Télécharger"
+2. Paste the YouTube URL in the input field
+3. Choose the format (MP4 Video or MP3 Audio)
+4. Select video quality for videos
+5. Click "Download"
 
-Les fichiers seront sauvegardés dans le dossier "downloads".
+Files will be saved in the "downloads" folder.
 
-## 📁 Structure du projet
+## 📁 Project Structure
 
 ```
 convertisseur_MP3_MP4/
-├── main.py              # Programme principal
-├── requirements.txt     # Dépendances Python
-├── install_ffmpeg.py    # Script d'installation ffmpeg
+├── main.py              # Main program
+├── requirements.txt     # Python dependencies
+├── install_ffmpeg.py    # ffmpeg installation script
 ├── README.md           # Documentation
-└── LICENSE             # Licence MIT
+└── LICENSE             # MIT License
 ```
 
 ## 📝 License
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Développeur
+## 👨‍💻 Developer
 
-- [@VOTRE-USERNAME](https://github.com/VOTRE-USERNAME)
+- [@Ad2m1109](https://github.com/Ad2m1109)
