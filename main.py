@@ -8,35 +8,35 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        # Configuration de la fenêtre
-        self.title("Convertisseur YouTube")
+        # Window configuration
+        self.title("YouTube MP3/MP4 Converter")
         self.geometry("800x600")
         
-        # Configuration du thème
+        # Theme configuration
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
 
-        # Création des widgets
+        # Create widgets
         self.setup_ui()
 
     def setup_ui(self):
-        # Frame principal
+        # Main frame
         self.main_frame = ctk.CTkFrame(self)
         self.main_frame.pack(padx=20, pady=20, fill="both", expand=True)
 
         # URL Input
-        self.url_label = ctk.CTkLabel(self.main_frame, text="URL YouTube:")
+        self.url_label = ctk.CTkLabel(self.main_frame, text="YouTube URL:")
         self.url_label.pack(pady=10)
         
         self.url_entry = ctk.CTkEntry(self.main_frame, width=400)
         self.url_entry.pack(pady=10)
 
-        # Boutons de format
+        # Format buttons
         self.format_frame = ctk.CTkFrame(self.main_frame)
         self.format_frame.pack(pady=20)
 
         self.format_var = ctk.StringVar(value="video")
-        self.video_radio = ctk.CTkRadioButton(self.format_frame, text="Vidéo (MP4)", 
+        self.video_radio = ctk.CTkRadioButton(self.format_frame, text="Video (MP4)", 
                                             variable=self.format_var, value="video")
         self.video_radio.pack(side="left", padx=10)
         
@@ -44,8 +44,8 @@ class App(ctk.CTk):
                                             variable=self.format_var, value="audio")
         self.audio_radio.pack(side="left", padx=10)
 
-        # Menu déroulant pour la qualité
-        self.quality_label = ctk.CTkLabel(self.main_frame, text="Qualité:")
+        # Quality dropdown
+        self.quality_label = ctk.CTkLabel(self.main_frame, text="Quality:")
         self.quality_label.pack(pady=5)
         
         self.quality_var = ctk.StringVar(value="720p")
@@ -54,17 +54,17 @@ class App(ctk.CTk):
                                             variable=self.quality_var)
         self.quality_menu.pack(pady=5)
 
-        # Bouton de téléchargement
-        self.download_button = ctk.CTkButton(self.main_frame, text="Télécharger",
+        # Download button
+        self.download_button = ctk.CTkButton(self.main_frame, text="Download",
                                            command=self.start_download)
         self.download_button.pack(pady=20)
 
-        # Barre de progression
+        # Progress bar
         self.progress_bar = ctk.CTkProgressBar(self.main_frame)
         self.progress_bar.pack(pady=20, fill="x", padx=40)
         self.progress_bar.set(0)
 
-        # Label d'état
+        # Status label
         self.status_label = ctk.CTkLabel(self.main_frame, text="")
         self.status_label.pack(pady=10)
 
@@ -77,22 +77,22 @@ class App(ctk.CTk):
                     progress = (downloaded / total)
                     self.progress_bar.set(progress)
                     percentage = progress * 100
-                    self.status_label.configure(text=f"Téléchargement: {percentage:.1f}%")
+                    self.status_label.configure(text=f"Downloading: {percentage:.1f}%")
             except Exception:
                 pass
         elif d['status'] == 'finished':
-            self.status_label.configure(text="Finalisation...")
+            self.status_label.configure(text="Finalizing...")
 
     def download_with_ytdlp(self, url):
         try:
             output_template = os.path.join("downloads", "%(title)s.%(ext)s")
             
             if self.format_var.get() == "video":
-                # Utiliser le format progressif (audio + vidéo combinés)
-                quality = self.quality_var.get()[:-1]  # Enlever le 'p' de '720p'
+                # Use progressive format (combined audio + video)
+                quality = self.quality_var.get()[:-1]  # Remove 'p' from '720p'
                 format_spec = f'best[height<={quality}][ext=mp4]/best[ext=mp4]'
             else:
-                # Format audio uniquement
+                # Audio format only
                 format_spec = 'bestaudio[ext=m4a]/bestaudio'
             
             ydl_opts = {
@@ -115,12 +115,12 @@ class App(ctk.CTk):
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
                 
-            self.status_label.configure(text="Téléchargement terminé!")
-            messagebox.showinfo("Succès", "Téléchargement terminé avec succès!")
+            self.status_label.configure(text="Download completed!")
+            messagebox.showinfo("Success", "Download completed successfully!")
             
         except Exception as e:
-            self.status_label.configure(text=f"Erreur: {str(e)}")
-            messagebox.showerror("Erreur", str(e))
+            self.status_label.configure(text=f"Error: {str(e)}")
+            messagebox.showerror("Error", str(e))
         finally:
             self.progress_bar.set(0)
             self.download_button.configure(state="normal")
@@ -128,17 +128,17 @@ class App(ctk.CTk):
     def start_download(self):
         url = self.url_entry.get()
         if not url:
-            messagebox.showerror("Erreur", "Veuillez entrer une URL YouTube valide")
+            messagebox.showerror("Error", "Please enter a valid YouTube URL")
             return
 
         self.download_button.configure(state="disabled")
-        self.status_label.configure(text="Démarrage du téléchargement...")
+        self.status_label.configure(text="Starting download...")
         
-        # Créer le dossier de téléchargement s'il n'existe pas
+        # Create downloads folder if it doesn't exist
         if not os.path.exists("downloads"):
             os.makedirs("downloads")
 
-        # Lancer le téléchargement dans un thread séparé
+        # Start download in a separate thread
         download_thread = Thread(target=self.download_with_ytdlp, args=(url,))
         download_thread.start()
 
